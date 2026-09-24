@@ -1,6 +1,6 @@
 module github.com/sagernet/sing-mux
 
-go 1.25.0
+go 1.27.1
 
 require (
 	github.com/hashicorp/yamux v0.1.2
