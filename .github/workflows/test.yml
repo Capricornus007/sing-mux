@@ -31,38 +31,6 @@ jobs:
       - name: Build
         run: |
           make test
-  build_go121:
-    name: Linux (Go 1.21)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-      - name: Setup Go
-        uses: actions/setup-go@v7
-        with:
-          go-version: ~1.21
-        continue-on-error: true
-      - name: Build
-        run: |
-          make test
-  build_go122:
-    name: Linux (Go 1.22)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-      - name: Setup Go
-        uses: actions/setup-go@v7
-        with:
-          go-version: ~1.22
-        continue-on-error: true
-      - name: Build
-        run: |
-          make test
   build_windows:
     name: Windows
     runs-on: windows-latest
@@ -74,8 +42,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v7
         with:
-          go-version: ^1.23
-        continue-on-error: true
+          go-version: 1.27.1
       - name: Build
         run: |
           make test
@@ -90,8 +57,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v7
         with:
-          go-version: ^1.23
-        continue-on-error: true
+          go-version: 1.27.1
       - name: Build
         run: |
           make test
