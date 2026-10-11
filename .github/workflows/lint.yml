@@ -24,13 +24,12 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - name: Setup Go
-        uses: actions/setup-go@v7
-        with:
-          go-version: 1.27.1
+      - name: Install Go from the feed (golang/go master tip)
+        uses: Capricornus007/repo/.github/actions/setup-feed-go@master
+      # 不能用 golangci-lint-action / go install：它釘 x/tools v0.50.0，讀不了 go tip 的
+      # std export data（實測 v0.50 ✗、v0.51 ✓、v0.52 ✓）→ Lint 必紅。換依賴重 build
+      # 的步驟與交叉表在 feed 倉 .github/actions/setup-gcl。
+      - name: Install golangci-lint that reads Go tip export data
+        uses: Capricornus007/repo/.github/actions/setup-gcl@master
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v9
-        with:
-          version: latest
-          install-mode: binary
-          args: .
+        run: golangci-lint run .
