@@ -31,5 +31,8 @@ jobs:
       # 的步驟與交叉表在 feed 倉 .github/actions/setup-gcl。
       - name: Install golangci-lint that reads Go tip export data
         uses: Capricornus007/repo/.github/actions/setup-gcl@master
+        with:
+          version: v2.15.0
+          xtools: v0.52.0
       - name: golangci-lint
         run: golangci-lint run .
